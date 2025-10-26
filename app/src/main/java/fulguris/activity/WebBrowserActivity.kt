@@ -331,14 +331,14 @@ abstract class WebBrowserActivity : ThemedBrowserActivity(),
         // Need to go first to inject our components
         super.onCreate(savedInstanceState)
         // Check if terms have been accepted
-        if (!userPreferences.acceptTerms) {
+        //if (!userPreferences.acceptTerms) {
             // Show app introduction for first-time users
-            startActivity(Intent(this, IntroActivity::class.java))
+        //    startActivity(Intent(this, IntroActivity::class.java))
             // User will have to restart incognito mode himself if this was an incognito activity
-            finish()
+        //    finish()
             // Not sure why but if we return here we crash even after IntroActivity is shown
             //return
-        }
+        //}
         //
         updateConfigurationSharedPreferences()
         // We want to control our decor
@@ -419,24 +419,16 @@ abstract class WebBrowserActivity : ThemedBrowserActivity(),
 
         initialize(savedInstanceState)
 
-        if (BuildConfig.FLAVOR.contains("slionsFullDownload")) {
-            tabsManager.doOnceAfterInitialization {
-                // Check for update after a short delay, hoping user engagement is better and message more visible
-                mainHandler.postDelayed({ checkForUpdates() }, 3000)
+        makeSnackbar("",3000, Gravity.TOP).setAction("Powered by ⚡Fulguris") {
+            Intent(Intent.ACTION_VIEW).apply{
+                data = Uri.parse(getString(R.string.url_fulguris_home_page))
+                putExtra("SOURCE", "SELF")
+                startActivity(this)
             }
-        } else if (BuildConfig.FLAVOR_BRAND != "slions") {
-            // As per CPAL license show attribution if not slions brand
-            makeSnackbar("",5000, Gravity.TOP).setAction("Powered by ⚡Fulguris") {
-                Intent(Intent.ACTION_VIEW).apply{
-                    data = Uri.parse(getString(R.string.url_fulguris_home_page))
-                    putExtra("SOURCE", "SELF")
-                    startActivity(this)
-                }
-            }.show()
-        }
+        }.show()
 
         // Welcome new users or notify of updates
-        tabsManager.doOnceAfterInitialization {
+        /*tabsManager.doOnceAfterInitialization {
             // If our version code was changed
             if (userPreferences.versionCode != BuildConfig.VERSION_CODE) {
                 if (userPreferences.versionCode==0
@@ -444,15 +436,13 @@ abstract class WebBrowserActivity : ThemedBrowserActivity(),
                         // TODO: Remove that a few versions down the road
                         && tabsManager.iSessions.count()==1 && tabsManager.allTabs.count()==1) {
                     // First run
-                    welcomeToFulguris()
                 } else {
-                    // Version was updated
-                    notifyVersionUpdate()
+                    // Update
                 }
                 // Persist our current version so that we don't kick in next time
                 userPreferences.versionCode = BuildConfig.VERSION_CODE
             }
-        }
+        }*/
 
         // This callback is trigger after we switch session, Could be useful at some point
         //tabsManager.doAfterInitialization {}
@@ -3332,6 +3322,7 @@ abstract class WebBrowserActivity : ThemedBrowserActivity(),
         }
     }
 
+    @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
         doBackAction()
     }
@@ -4217,6 +4208,7 @@ abstract class WebBrowserActivity : ThemedBrowserActivity(),
      * My understanding is that this is a WebView callback from web forms asking user to pick a file.
      * So why do we create an image file in there? That does not make sense to me.
      */
+    @SuppressLint("TimberArgCount")
     override fun showFileChooser(filePathCallback: ValueCallback<Array<Uri>>) {
         this.filePathCallback?.onReceiveValue(null)
         this.filePathCallback = filePathCallback
@@ -4248,6 +4240,7 @@ abstract class WebBrowserActivity : ThemedBrowserActivity(),
         }, FILE_CHOOSER_REQUEST_CODE)
     }
 
+    @SuppressLint("TimberArgCount")
     override fun onShowCustomView(view: View, callback: CustomViewCallback, requestedOrientation: Int) {
         val currentTab = tabsManager.currentTab
         if (customView != null) {
@@ -4294,6 +4287,7 @@ abstract class WebBrowserActivity : ThemedBrowserActivity(),
         currentTab?.setVisibility(INVISIBLE)
     }
 
+    @SuppressLint("TimberArgCount")
     override fun onHideCustomView() {
         val currentTab = tabsManager.currentTab
         if (customView == null || customViewCallback == null || currentTab == null) {
@@ -4672,94 +4666,6 @@ abstract class WebBrowserActivity : ThemedBrowserActivity(),
             } else {
                 false
             }
-
-
-    /**
-     * Welcome user after first installation.
-     */
-    private fun welcomeToFulguris() {
-        MaterialAlertDialogBuilder(this)
-                .setCancelable(true)
-                .setTitle(R.string.title_welcome)
-                .setMessage(R.string.message_welcome)
-                .setNegativeButton(R.string.no, null)
-                .setPositiveButton(R.string.yes) { _, _ -> val url = getString(R.string.url_app_home_page)
-                    val i = Intent(Intent.ACTION_VIEW)
-                    i.data = Uri.parse(url)
-                    // Not sure that does anything
-                    i.putExtra("SOURCE", "SELF")
-                    startActivity(i)}
-                .resizeAndShow()
-    }
-
-
-    /**
-     * Notify user about application update.
-     */
-    private fun notifyVersionUpdate() {
-        // TODO: Consider using snackbar instead to be less intrusive, make it a settings option?
-        MaterialAlertDialogBuilder(this)
-                .setCancelable(true)
-                .setTitle(R.string.title_updated)
-                .setMessage(getString(R.string.message_updated, BuildConfig.VERSION_NAME))
-                .setNegativeButton(R.string.no, null)
-                .setPositiveButton(R.string.yes) { _, _ -> val url = getString(R.string.url_app_updates)
-                    val i = Intent(Intent.ACTION_VIEW)
-                    i.data = Uri.parse(url)
-                    // Not sure that does anything
-                    i.putExtra("SOURCE", "SELF")
-                    startActivity(i)}
-                .resizeAndShow()
-    }
-
-
-    /**
-     * Check for update on slions.net.
-     */
-    private fun checkForUpdates() {
-        val url = getString(R.string.slions_update_check_url)
-        // Request a JSON object response from the provided URL.
-        val request = object: JsonObjectRequest(Request.Method.GET, url, null,
-                Response.Listener<JSONObject> { response ->
-
-                    val latestVersion = response.getJSONArray("versions").getJSONObject(0).getString("version_string")
-                    if (latestVersion != BuildConfig.VERSION_NAME) {
-                        // We have an update available, tell our user about it
-                        makeSnackbar(
-                                getString(R.string.update_available) + " - v" + latestVersion, 5000, if (configPrefs.toolbarsBottom) Gravity.TOP else Gravity.BOTTOM) //Snackbar.LENGTH_LONG
-                                .setAction(R.string.show, OnClickListener {
-                                    val url = getString(R.string.url_app_home_page)
-                                    val i = Intent(Intent.ACTION_VIEW)
-                                    i.data = Uri.parse(url)
-                                    // Not sure that does anything
-                                    i.putExtra("SOURCE", "SELF")
-                                    startActivity(i)
-                                }).show()
-                    }
-
-                    //Log.d(TAG,response.toString())
-                },
-                Response.ErrorListener { error: VolleyError ->
-                    // Just ignore error for background update check
-                    // Use the following for network status code
-                    // Though networkResponse can be null in flight mode for instance
-                    // error.networkResponse.statusCode.toString()
-
-                }
-        ){
-            @Throws(AuthFailureError::class)
-            override fun getHeaders(): Map<String, String> {
-                val params: MutableMap<String, String> = HashMap()
-                // Provide here slions.net API key as part of this requests HTTP headers
-                params["XF-Api-Key"] = getString(R.string.slions_api_key)
-                return params
-            }
-        }
-
-        request.tag = TAG
-        // Add the request to the RequestQueue.
-        queue.add(request)
-    }
 
     var iLastTouchUpPosition: Point = Point()
 

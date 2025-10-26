@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import fulguris.R
-import fulguris.activity.IntroActivity
 import fulguris.extensions.openBrowserChooser
 import timber.log.Timber
 
@@ -20,7 +19,7 @@ class AcceptTermsPreferenceFragment: PreferenceFragmentCompat() {
     // Track the delayed navigation task so it can be cancelled if user toggles switch back
     private val pendingNavigation = Runnable {
         Timber.d("Executing delayed navigation to next slide")
-        (activity as? IntroActivity)?.nextSlide()
+        //(activity as? IntroActivity)?.nextSlide()
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {

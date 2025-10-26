@@ -40,11 +40,7 @@ android.productFlavors.all { flavor ->
     if (getGradle().getStartParameter().getTaskRequests().toString().toLowerCase().contains(flavor.name)) {
         // Only download and playstore flavor need Firebase
         if (flavor.name == "download" || flavor.name == "playstore") {
-            println("Building flavor with Firebase [${flavor.name}] - applying plugin")
-            // Google Services Gradle plugin
-            apply plugin: 'com.google.gms.google-services'
-            // Apply the Crashlytics Gradle plugin
-            apply plugin: 'com.google.firebase.crashlytics'
+            // pass
         }
     }
 }
@@ -121,28 +117,12 @@ android {
 
     productFlavors {
 
-        slions {
+        uibrowser {
             dimension "BRAND"
-            applicationId "net.slions.fulguris"
-            versionCode 238
-            versionName "1.11.0"
+            applicationId "yuce.browser.mini"
+            versionCode 20
+            versionName '1.2.0'
         }
-
-        styx {
-            dimension "BRAND"
-            applicationId "com.jamal2367.styx"
-            versionCode 1
-            versionName "20.0"
-        }
-
-        /*
-        lightning {
-            dimension "BRAND"
-            applicationId "fulguris"
-            versionCode 101
-            versionName "5.1.0"
-        }
-        */
 
         // Base version does not add application ID suffix
         base {
@@ -150,56 +130,11 @@ android {
             buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
         }
 
-        full {
-            dimension "VERSION"
-            buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
-            applicationIdSuffix ".full"
-        }
-
-        /*
-        lite {
-            dimension "VERSION"
-            buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"false\")"
-            applicationIdSuffix ".lite"
-        }
-        */
-
-        // Undefined publisher do not add application ID suffix
-        undef {
-            dimension "PUBLISHER"
-            buildConfigField "fulguris.Sponsorship", "SPONSORSHIP", "fulguris.Sponsorship.BRONZE"
-        }
-
         playstore {
             dimension "PUBLISHER"
-            applicationIdSuffix ".playstore"
-            buildConfigField "fulguris.Sponsorship", "SPONSORSHIP", "fulguris.Sponsorship.TIN"
+            buildConfigField "fulguris.Sponsorship", "SPONSORSHIP", "fulguris.Sponsorship.GOLD"
         }
 
-        download {
-            dimension "PUBLISHER"
-            applicationIdSuffix ".download"
-            buildConfigField "fulguris.Sponsorship", "SPONSORSHIP", "fulguris.Sponsorship.BRONZE"
-        }
-
-        fdroid {
-            dimension "PUBLISHER"
-            applicationIdSuffix ".fdroid"
-            buildConfigField "fulguris.Sponsorship", "SPONSORSHIP", "fulguris.Sponsorship.BRONZE"
-        }
-
-    }
-
-    // Filter out invalid variants
-    variantFilter { variant ->
-        def names = variant.flavors*.name
-        // slions variant do not support base version and undef publisher
-        if ((names.contains("slions") && (names.contains("undef") || names.contains("base")))
-                // styx variant only support base version and undef publisher
-                || (names.contains("styx") && !(names.contains("undef") && names.contains("base")))) {
-            // Gradle ignores any variants that satisfy the conditions above.
-            setIgnore(true)
-        }
     }
 
     packagingOptions {
@@ -212,23 +147,13 @@ android {
     // Needed to customize our APK file name per flavor
     applicationVariants.configureEach { variant ->
         variant.outputs.configureEach { output ->
-            //def appId = variant.applicationId// com.exampleFree.app OR com.examplePaid.app
             def versionName = variant.versionName
             //def versionCode = variant.versionCode // e.g 1.0
             //def flavorName = variant.flavorName // e. g. Free
             //def buildType = variant.buildType.name // e. g. debug
             //def variantName = variant.name // e. g. FreeDebug
 
-            // Just replace our archive base name, which by default is "app" with our own format according to flavor
-            if (variant.flavorName.contains("slions")) {
-                //println("Use Fulguris archive name")
-                outputFileName = outputFileName.replaceFirst("^$archivesBaseName", "Fulguris-v$versionName")
-            } else if (variant.flavorName.contains("styx")) {
-                //println("Use Styx archive name")
-                outputFileName = outputFileName.replaceFirst("^$archivesBaseName", "Styx-v$versionName")
-            }
-            //customize your app name by using variables
-            //outputFileName = "${variantName}.apk"
+            outputFileName = outputFileName.replaceFirst("^$archivesBaseName", "Uibrowser-v$versionName")
         }
 
         // Allow application id access from resources, most useful for explicit intent
@@ -294,27 +219,8 @@ dependencies {
     implementation 'androidx.preference:preference-ktx:1.2.1'
     // Webkit: https://developer.android.com/jetpack/androidx/releases/webkit
     implementation 'androidx.webkit:webkit:1.10.0'
-
-    //def lifecycle_version = "2.4.0"
-    //implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
-    //implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    // We had to use alpha release to be able to use edge-to-edge bottom sheet
-    // In code we use reflection to access some bottom sheet private class, methods and fields
-    // Whenever you update that library you will need to review those hacks, see adjustBottomSheet.
-    // Also search the code for BottomSheetDialog::class
     implementation "com.google.android.material:material:1.12.0"
-    //implementation group: 'com.google.android.material', name: 'material', version: '1.6.0-alpha01'
-
-    //
-    //implementation "net.slions.android:preference:0.1.0"
     implementation project(path: ":Preference")
-    //implementation project(path: ":Preference", configuration: "release")
-
-    // AppIntro library
-    implementation project(path: ":AppIntro")
-
-    // Play Store billing
-    playstoreImplementation 'com.android.billingclient:billing:6.2.0'
 
     // html parsing for reading mode
     implementation 'org.jsoup:jsoup:1.13.1'
@@ -325,13 +231,6 @@ dependencies {
     // Built-in files support
     implementation("com.anthonycr.mezzanine:core:2.1.0")
     ksp("com.anthonycr.mezzanine:processor:2.1.0")
-
-    // Just using the local JAR won't work as is since the compiler has other unresolved dependencies
-    // We notably get java.lang.ClassNotFoundException: org.apache.commons.lang3.StringEscapeUtils when compiling
-    // See: https://stackoverflow.com/questions/28504174/noclassdeffounderror-org-apache-commons-lang3-stringutils
-    // Those dependencies are defined in the POM XML of the mezzanine-compiler package
-    //implementation files("libs/mezzanine-${mezzanineVersion}.jar")
-    //kapt files("libs/mezzanine-compiler-${mezzanineVersion}.jar")
 
     // dependency injection
     implementation "com.google.dagger:dagger:$daggerVersion"
@@ -352,30 +251,13 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
 
-    // memory leak analysis
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.13'
-
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     //implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
-    // Firebase
-    // Recommended: Add the Firebase SDK for Google Analytics.
-    playstoreImplementation 'com.google.firebase:firebase-analytics:21.6.1'
-    downloadImplementation 'com.google.firebase:firebase-analytics:21.6.1'
-    // Add the Firebase SDK for Crashlytics.
-    playstoreImplementation 'com.google.firebase:firebase-crashlytics:18.6.3'
-    downloadImplementation 'com.google.firebase:firebase-crashlytics:18.6.3'
-
-
     // Volley HTTP request
     implementation 'com.android.volley:volley:1.2.1'
-
-    // Since java.time need API 26 we use that backport instead
-    // See: https://github.com/JakeWharton/ThreeTenABP
     implementation 'com.jakewharton.threetenabp:threetenabp:1.4.7'
-
-    // Logs
     implementation 'com.jakewharton.timber:timber:5.0.1'
 }
 

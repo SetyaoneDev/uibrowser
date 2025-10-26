@@ -22,11 +22,9 @@
 -->
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string name="app_name">Lightning</string>
-    <string name="url_app_home_page">https://github.com/anthonycr/Lightning-Browser</string>
-    <string name="url_privacy_policy">https://slions.net/threads/fulguris-privacy-policy.99/</string>
-    <string name="url_terms_and_conditions">https://slions.net/threads/fulguris-terms-conditions.100/</string>
-    <string name="url_discord">https://discord.com/invite/7M4Ms5dMZE</string>
+    <string name="app_name">Ui Browser</string>
+    <string name="url_app_home_page">https://github.com/ojixzzz/ui-browser</string>
+    <string name="url_privacy_policy">https://github.com/ojixzzz/ui-browser</string>
     <string name="url_fulguris_home_page">http://fulguris.slions.net</string>
 
     <!-- Settings keys -->
@@ -200,6 +198,7 @@
     <string name="nine">9</string>
     <string name="ten">10</string>
 
+    <string name="app_name_fulguris_browser">Fulguris Browser</string>
     <string name="app_name_yuzu_browser">Yuzu Browser</string>
     <string name="app_name_lightning_browser">Lightning Browser</string>
 

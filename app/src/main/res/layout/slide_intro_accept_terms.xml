@@ -15,9 +15,9 @@
             android:layout_height="match_parent"
             android:id="@+id/content">
 
+            <!--style="@style/AppIntroDefaultHeading"-->
             <TextView
                 android:id="@+id/title"
-                style="@style/AppIntroDefaultHeading"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"

@@ -183,21 +183,7 @@
             android:process=":incognito"
             android:theme="@style/Theme.App.DayNight"
             android:windowSoftInputMode="stateHidden|adjustResize"
-            android:exported="true"
-            android:icon="@mipmap/ic_launcher_incognito"
-            android:roundIcon="@mipmap/ic_launcher_incognito_round">
-
-            <!--
-            Incognito mode currently not going through splash screen
-            Therefore it must be shown in the launcher
-            -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <category android:name="android.intent.category.APP_BROWSER" />
-            </intent-filter>
+            android:exported="true">
 
             <!--  Handle various mime types and allow being used as default viewer -->
             <intent-filter>
@@ -335,14 +321,6 @@
             android:noHistory="true"
             android:taskAffinity=""
             android:launchMode="singleInstance" />
-
-        <!-- App Introduction Activity
-             Force dark theme for intro regardless of system and user preferences
-        -->
-        <activity
-            android:name="fulguris.activity.IntroActivity"
-            android:theme="@style/Theme.App.Dark"
-            android:exported="false" />
 
         <activity
             android:name="fulguris.activity.SettingsActivity"
