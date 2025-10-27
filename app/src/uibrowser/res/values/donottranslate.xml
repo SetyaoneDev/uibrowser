@@ -23,6 +23,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Ui Browser</string>
     <string name="app_name_debug">Ui Browser Debug</string>
-    <string name="url_app_home_page">https://github.com/ojixzzz/ui-browser</string>
+    <string name="url_app_home_page">https://github.com/SetyaoneDev/uibrowser</string>
     <string name="url_privacy_policy">https://telegra.ph/Privacy-Policy-09-23-3</string>
 </resources>
