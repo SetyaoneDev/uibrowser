@@ -9,7 +9,7 @@
 
         <!-- Empty default: we use an empty string to indicate "system default" language being selected -->
         <!--suppress AndroidDomInspection -->
-        <fulguris.settings.preferences.LocaleListPreference
+        <newuibrowser.settings.preferences.LocaleListPreference
             android:defaultValue=""
             android:key="@string/pref_key_locale"
             android:title="@string/pref_title_language"
@@ -70,7 +70,7 @@
             app:entries="@array/incoming_view_actions"
             app:icon="@drawable/ic_baseline_open_in_new_24"
             app:singleLineTitle="false"
-            app:enumClassName="fulguris.enums.IncomingViewAction" />
+            app:enumClassName="newuibrowser.enums.IncomingViewAction" />
 
     </PreferenceCategory>
 

@@ -48,7 +48,7 @@
         android:focusable="true"
         >
 
-        <fulguris.view.ImageView
+        <newuibrowser.view.ImageView
             android:id="@+id/search_ssl_status"
             android:layout_width="@dimen/material_grid_touch_small"
             android:layout_height="match_parent"
@@ -66,7 +66,7 @@
         That make sense cause that field does not actually contains the URL if it displays the page title.
         I'm guessing bitwarden is simply using AssistStructure.ViewNode.getWebDomain instead.
          -->
-        <fulguris.view.SearchView
+        <newuibrowser.view.SearchView
             android:id="@+id/search"
             android:layout_width="0dp"
             android:layout_height="match_parent"

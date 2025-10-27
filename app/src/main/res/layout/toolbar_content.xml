@@ -99,7 +99,7 @@
         android:nextFocusDown="@id/web_view"
         />
 
-    <fulguris.icon.TabCountView
+    <newuibrowser.icon.TabCountView
         android:id="@+id/tabs_button"
         style="?android:attr/actionButtonStyle"
         android:layout_width="@dimen/material_grid_touch_medium"

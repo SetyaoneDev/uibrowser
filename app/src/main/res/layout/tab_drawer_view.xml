@@ -6,7 +6,7 @@
     <data>
         <variable
             name="uiController"
-            type="fulguris.browser.WebBrowser"/>
+            type="newuibrowser.browser.WebBrowser"/>
     </data>
 
 <LinearLayout

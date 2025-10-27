@@ -45,7 +45,7 @@
             android:action="android.intent.action.VIEW"
             android:data=""
             android:targetPackage="@string/application_id"
-            android:targetClass="fulguris.activity.MainActivity"
+            android:targetClass="newuibrowser.activity.MainActivity"
             >
 
         </intent>
@@ -53,7 +53,7 @@
     </Preference>
 
     <slions.pref.BasicPreference
-        a:fragment="fulguris.settings.fragment.DomainSettingsFragment"
+        a:fragment="newuibrowser.settings.fragment.DomainSettingsFragment"
         a:key="@string/pref_key_parent"
         a:title="@string/settings_title_parent"
         a:icon="@drawable/ic_domain"
@@ -167,7 +167,7 @@
 
     </PreferenceCategory>
 
-    <fulguris.settings.preferences.PreferenceCategoryEx
+    <newuibrowser.settings.preferences.PreferenceCategoryEx
         a:title="@string/settings_title_launch_app"
         a:summary="@string/dialog_message_third_party_app">
 
@@ -188,13 +188,13 @@
             a:entries="@array/NoYesAsk"
             a:icon="@drawable/ic_apps"
             a:singleLineTitle="false"
-            a:enumClassName="fulguris.settings.NoYesAsk"
+            a:enumClassName="newuibrowser.settings.NoYesAsk"
             a:dependency="@string/pref_key_launch_app_override"
             />
 
-    </fulguris.settings.preferences.PreferenceCategoryEx>
+    </newuibrowser.settings.preferences.PreferenceCategoryEx>
 
-    <fulguris.settings.preferences.PreferenceCategoryEx
+    <newuibrowser.settings.preferences.PreferenceCategoryEx
         a:title="@string/settings_title_ssl_error"
         a:summary="@string/settings_summary_ssl_error">
 
@@ -215,13 +215,13 @@
             a:entries="@array/AbortProceedAsk"
             a:icon="@drawable/ic_unsecured"
             a:singleLineTitle="false"
-            a:enumClassName="fulguris.settings.NoYesAsk"
+            a:enumClassName="newuibrowser.settings.NoYesAsk"
             a:dependency="@string/pref_key_ssl_error_override"
             />
 
-    </fulguris.settings.preferences.PreferenceCategoryEx>
+    </newuibrowser.settings.preferences.PreferenceCategoryEx>
 
-    <fulguris.settings.preferences.PreferenceCategoryEx
+    <newuibrowser.settings.preferences.PreferenceCategoryEx
         a:title="@string/settings_title_incoming_url_action"
         a:summary="@string/settings_summary_incoming_url_action">
 
@@ -242,11 +242,11 @@
             a:entries="@array/incoming_url_actions"
             a:icon="@drawable/ic_baseline_open_in_new_24"
             a:singleLineTitle="false"
-            a:enumClassName="fulguris.enums.IncomingUrlAction"
+            a:enumClassName="newuibrowser.enums.IncomingUrlAction"
             a:dependency="@string/pref_key_incoming_url_action_override"
             />
 
-    </fulguris.settings.preferences.PreferenceCategoryEx>
+    </newuibrowser.settings.preferences.PreferenceCategoryEx>
 
     <slions.pref.SwitchPreference
         a:key="@string/pref_key_entry_point"

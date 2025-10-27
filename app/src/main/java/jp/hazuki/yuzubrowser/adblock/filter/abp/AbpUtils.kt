@@ -16,7 +16,7 @@
 
 package jp.hazuki.yuzubrowser.adblock.filter.abp
 
-import fulguris.adblock.AbpBlockerManager.Companion.blockerPrefixes
+import newuibrowser.adblock.AbpBlockerManager.Companion.blockerPrefixes
 import jp.hazuki.yuzubrowser.adblock.repository.abp.AbpEntity
 import java.io.File
 import java.security.InvalidParameterException

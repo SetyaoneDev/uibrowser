@@ -15,9 +15,12 @@
     See: https://developer.android.com/about/versions/12/migration
     See: https://proandroiddev.com/android-12-privacy-changes-for-location-55ffd8c016fd
     See: https://developer.android.com/training/location/permissions#approximate-request
-    -->
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    -->
+
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -57,7 +60,7 @@
     </queries>
 
     <application
-        android:name="fulguris.App"
+        android:name="newuibrowser.App"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -68,6 +71,10 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.App.Black"
         >
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
 
         <!--
             Support super narrow Samsung cover display on early Z Fold models, see:
@@ -85,8 +92,8 @@
         <!-- Make it resizable for Multi-Window mode support, such as Samsung Dex
         Needed to be in the root activity which is our splash screen apparently.
         -->
-        <activity android:name="fulguris.activity.SplashActivity"
-            android:theme="@style/Theme.App.SplashScreen"
+        <activity android:name="newuibrowser.activity.SplashActivity"
+            android:theme="@style/Theme.App.DayNight"
             android:resizeableActivity="true"
             android:exported="true">
             <intent-filter>
@@ -104,7 +111,7 @@
 
         <!-- No MAIN intent filter as this is launched through our splash screen -->
         <activity
-            android:name="fulguris.activity.MainActivity"
+            android:name="newuibrowser.activity.MainActivity"
             android:alwaysRetainTaskState="true"
             android:clearTaskOnLaunch="false"
             android:colorMode="wideColorGamut"
@@ -128,7 +135,7 @@
                 <data android:scheme="inline" />
                 <data android:scheme="about" />
                 <data android:scheme="javascript" />
-                <data android:scheme="fulguris" />
+                <data android:scheme="uibrowser" />
 
                 <data android:mimeType="text/html" />
                 <data android:mimeType="text/plain" />
@@ -173,13 +180,13 @@
         -->
         <!-- TODO: Launch this through splash screen too? -->
         <activity
-            android:name="fulguris.activity.IncognitoActivity"
+            android:name="newuibrowser.activity.IncognitoActivity"
             android:alwaysRetainTaskState="true"
             android:colorMode="wideColorGamut"
             android:resizeableActivity="true"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
             android:launchMode="singleInstance"
-            android:parentActivityName="fulguris.activity.MainActivity"
+            android:parentActivityName="newuibrowser.activity.MainActivity"
             android:process=":incognito"
             android:theme="@style/Theme.App.DayNight"
             android:windowSoftInputMode="stateHidden|adjustResize"
@@ -198,7 +205,7 @@
                 <data android:scheme="inline" />
                 <data android:scheme="about" />
                 <data android:scheme="javascript" />
-                <data android:scheme="fulguris" />
+                <data android:scheme="uibrowser" />
 
                 <data android:mimeType="text/html" />
                 <data android:mimeType="text/plain" />
@@ -239,8 +246,8 @@
         </activity>
 
         <activity-alias
-            android:name="fulguris.alias.default.BrowserActivity"
-            android:targetActivity="fulguris.activity.MainActivity"
+            android:name="newuibrowser.alias.default.BrowserActivity"
+            android:targetActivity="newuibrowser.activity.MainActivity"
             android:exported="true"
             android:enabled="false">
 
@@ -257,14 +264,14 @@
                 <data android:scheme="inline" />
                 <data android:scheme="about" />
                 <data android:scheme="javascript" />
-                <data android:scheme="fulguris" />
+                <data android:scheme="uibrowser" />
 
             </intent-filter>
         </activity-alias>
 
         <activity-alias
-            android:name="fulguris.alias.default.IncognitoActivity"
-            android:targetActivity="fulguris.activity.IncognitoActivity"
+            android:name="newuibrowser.alias.default.IncognitoActivity"
+            android:targetActivity="newuibrowser.activity.IncognitoActivity"
             android:exported="true"
             android:enabled="false">
 
@@ -281,7 +288,7 @@
                 <data android:scheme="inline" />
                 <data android:scheme="about" />
                 <data android:scheme="javascript" />
-                <data android:scheme="fulguris" />
+                <data android:scheme="uibrowser" />
 
             </intent-filter>
         </activity-alias>
@@ -289,7 +296,7 @@
 
         <!-- Transparent activity for browser selection dialog -->
         <activity
-            android:name="fulguris.activity.SelectBrowserActivity"
+            android:name="newuibrowser.activity.SelectBrowserActivity"
             android:theme="@style/Theme.App.Transparent"
             android:exported="true"
             android:excludeFromRecents="true"
@@ -314,7 +321,7 @@
         Used during onboarding to make sure links are opened in other browsers so as not to break our workflow.
         -->
         <activity
-            android:name="fulguris.activity.SelectOtherBrowserActivity"
+            android:name="newuibrowser.activity.SelectOtherBrowserActivity"
             android:theme="@style/Theme.App.Transparent"
             android:exported="false"
             android:excludeFromRecents="true"
@@ -323,11 +330,11 @@
             android:launchMode="singleInstance" />
 
         <activity
-            android:name="fulguris.activity.SettingsActivity"
+            android:name="newuibrowser.activity.SettingsActivity"
             android:colorMode="wideColorGamut"
             android:resizeableActivity="true"
             android:label="@string/settings"
-            android:parentActivityName="fulguris.activity.MainActivity"
+            android:parentActivityName="newuibrowser.activity.MainActivity"
             android:theme="@style/Theme.App.DayNight"
             android:exported="true">
             <intent-filter>
@@ -344,7 +351,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="fulguris.activity.ReadingActivity"
+            android:name="newuibrowser.activity.ReadingActivity"
             android:colorMode="wideColorGamut"
             android:resizeableActivity="true"
             android:label="@string/reading_mode"

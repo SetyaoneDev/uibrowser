@@ -112,7 +112,7 @@
      * @param aString String to log
      */
     function log(aString) {
-        console.log("Fulguris: " + aString);
+        console.log("Newuibrowser: " + aString);
     }
 
     // Reapply our meta viewport again whenever our page is resized

@@ -52,7 +52,6 @@
     <color name="ssl_secured">#4CAF50</color>
     <color name="ssl_unsecured">#F44336</color>
 
-    <!-- Fulguris brand colours -->
     <color name="app_blue_light">#69ABFF</color>
     <color name="app_blue">#007DFF</color>
     <color name="app_blue_dark">#0052CB</color>

@@ -29,7 +29,7 @@
         android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="fulguris.activity.WebBrowserActivity"
+        tools:context="newuibrowser.activity.WebBrowserActivity"
 
         android:animateLayoutChanges="true"
         android:fitsSystemWindows="true">
@@ -96,7 +96,7 @@
                             android:layout_weight="1"
                             android:animateLayoutChanges="false">
 
-                            <fulguris.view.PullRefreshLayout
+                            <newuibrowser.view.PullRefreshLayout
                                 android:id="@+id/tabViewContainerOne"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -104,7 +104,7 @@
                                 android:clipChildren="true"
                                 android:animateLayoutChanges="false" />
 
-                            <fulguris.view.PullRefreshLayout
+                            <newuibrowser.view.PullRefreshLayout
                                 android:id="@+id/tabViewContainerTwo"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -131,6 +131,16 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+                <com.google.android.gms.ads.AdView
+                    android:visibility="gone"
+                    android:id="@+id/adViewAdmob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="18dp"
+                    app:adSize="BANNER"
+                    app:adUnitId="ca-app-pub-3940256099942544/9214589741" />
 
             </LinearLayout>
 

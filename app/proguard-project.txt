@@ -15,11 +15,11 @@
 -keep public class * extends android.content.ContentProvider
 -keep public class * extends android.app.backup.BackupAgentHelper
 -keep public class * extends android.preference.Preference
--keep public class fulguris.reading.*
--keep public class fulguris.settings.fragment.*
--keep public class fulguris.settings.NoYesAsk
--keep public class fulguris.enums.LogLevel
--keep public class fulguris.enums.*
+-keep public class newuibrowser.reading.*
+-keep public class newuibrowser.settings.fragment.*
+-keep public class newuibrowser.settings.NoYesAsk
+-keep public class newuibrowser.enums.LogLevel
+-keep public class newuibrowser.enums.*
 
 # Needed for now to fix our bottom sheet issue from com.google.android.material:material:1.4.0-alpha02
 -keep class com.google.android.material.bottomsheet.BottomSheetDialog$EdgeToEdgeCallback {
@@ -140,7 +140,7 @@
 -keep @dagger.hilt.DefineComponent class * { *; }
 
 # Specifically keep AppModule and its provider methods that return Mezzanine readers
--keep class fulguris.di.AppModule {
+-keep class newuibrowser.di.AppModule {
     public static com.anthonycr.mezzanine._Mezzanine_BookmarkPageReader providesBookmarkPageReader();
     public static com.anthonycr.mezzanine._Mezzanine_HomePageReader providesHomePageReader();
     public static com.anthonycr.mezzanine._Mezzanine_IncognitoPageReader providesIncognitoPageReader();

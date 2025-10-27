@@ -253,9 +253,9 @@
     <string name="settings_title_landscape">@string/pref_category_landscape</string>
     <string name="settings_title_add_configuration">Add configuration</string>
     <string name="settings_privacy">Privasi</string>
-    <string name="settings_about">Mengenai Fulguris</string>
+    <string name="settings_about">Mengenai Ui Browser</string>
     <string name="settings_contribute">Berkontribusi</string>
-    <string name="settings_summary_contribute">Membantu Fulguris tumbuh dan berkembang</string>
+    <string name="settings_summary_contribute">Membantu Ui Browser tumbuh dan berkembang</string>
     <string name="settings_title_privacy_policy">Kebijakan Privasi</string>
     <string name="settings_summary_privacy_policy">Lihat kebijakan privasi kami secara daring</string>
     <string name="settings_title_terms_and_conditions">Syarat &amp; Ketentuan</string>

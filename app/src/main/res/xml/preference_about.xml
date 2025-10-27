@@ -11,7 +11,7 @@
             android:key="pref_version"
             android:title="@string/version"
             app:iconSpaceReserved="false"
-            app:icon="@drawable/ic_lightning"
+            app:icon="@drawable/ic_webview"
             app:singleLineTitle="false">
 
             <intent
@@ -23,11 +23,11 @@
 
                 <extra
                     android:name="ACTIVITY"
-                    android:value="fulguris.activity.SettingsActivity" />
+                    android:value="newuibrowser.activity.SettingsActivity" />
 
                 <extra
                     android:name="FRAGMENT"
-                    android:value="fulguris.settings.fragment.AboutSettingsFragment" />
+                    android:value="newuibrowser.settings.fragment.AboutSettingsFragment" />
 
             </intent>
 
@@ -67,11 +67,11 @@
 
                 <extra
                     android:name="ACTIVITY"
-                    android:value="fulguris.activity.SettingsActivity" />
+                    android:value="newuibrowser.activity.SettingsActivity" />
 
                 <extra
                     android:name="FRAGMENT"
-                    android:value="fulguris.settings.fragment.AboutSettingsFragment" />
+                    android:value="newuibrowser.settings.fragment.AboutSettingsFragment" />
             </intent>
 
         </Preference>
@@ -96,11 +96,11 @@
 
                 <extra
                     android:name="ACTIVITY"
-                    android:value="fulguris.activity.SettingsActivity" />
+                    android:value="newuibrowser.activity.SettingsActivity" />
 
                 <extra
                     android:name="FRAGMENT"
-                    android:value="fulguris.settings.fragment.AboutSettingsFragment" />
+                    android:value="newuibrowser.settings.fragment.AboutSettingsFragment" />
 
             </intent>
 
@@ -122,11 +122,11 @@
 
                 <extra
                     android:name="ACTIVITY"
-                    android:value="fulguris.activity.SettingsActivity" />
+                    android:value="newuibrowser.activity.SettingsActivity" />
 
                 <extra
                     android:name="FRAGMENT"
-                    android:value="fulguris.settings.fragment.AboutSettingsFragment" />
+                    android:value="newuibrowser.settings.fragment.AboutSettingsFragment" />
 
             </intent>
 
@@ -148,11 +148,11 @@
 
                 <extra
                     android:name="ACTIVITY"
-                    android:value="fulguris.activity.SettingsActivity" />
+                    android:value="newuibrowser.activity.SettingsActivity" />
 
                 <extra
                     android:name="FRAGMENT"
-                    android:value="fulguris.settings.fragment.AboutSettingsFragment" />
+                    android:value="newuibrowser.settings.fragment.AboutSettingsFragment" />
 
             </intent>
 
@@ -174,11 +174,11 @@
 
                 <extra
                     android:name="ACTIVITY"
-                    android:value="fulguris.activity.SettingsActivity" />
+                    android:value="newuibrowser.activity.SettingsActivity" />
 
                 <extra
                     android:name="FRAGMENT"
-                    android:value="fulguris.settings.fragment.AboutSettingsFragment" />
+                    android:value="newuibrowser.settings.fragment.AboutSettingsFragment" />
             </intent>
 
         </Preference>
@@ -199,11 +199,11 @@
 
                 <extra
                     android:name="ACTIVITY"
-                    android:value="fulguris.activity.SettingsActivity" />
+                    android:value="newuibrowser.activity.SettingsActivity" />
 
                 <extra
                     android:name="FRAGMENT"
-                    android:value="fulguris.settings.fragment.AboutSettingsFragment" />
+                    android:value="newuibrowser.settings.fragment.AboutSettingsFragment" />
             </intent>
         </Preference>
 
@@ -223,11 +223,11 @@
 
                 <extra
                     android:name="ACTIVITY"
-                    android:value="fulguris.activity.SettingsActivity" />
+                    android:value="newuibrowser.activity.SettingsActivity" />
 
                 <extra
                     android:name="FRAGMENT"
-                    android:value="fulguris.settings.fragment.AboutSettingsFragment" />
+                    android:value="newuibrowser.settings.fragment.AboutSettingsFragment" />
             </intent>
         </Preference>
 

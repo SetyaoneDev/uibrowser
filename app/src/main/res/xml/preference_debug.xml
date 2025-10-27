@@ -44,7 +44,7 @@
         a:entries="@array/LogLevel"
         a:icon="@drawable/ic_short_text"
         a:singleLineTitle="false"
-        a:enumClassName="fulguris.enums.LogLevel"
+        a:enumClassName="newuibrowser.enums.LogLevel"
         />
 
     <slions.pref.SwitchPreference

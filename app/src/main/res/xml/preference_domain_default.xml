@@ -79,7 +79,7 @@
         a:entries="@array/NoYesAsk"
         a:icon="@drawable/ic_apps"
         a:singleLineTitle="false"
-        a:enumClassName="fulguris.settings.NoYesAsk"
+        a:enumClassName="newuibrowser.settings.NoYesAsk"
         />
 
     <slions.pref.EnumListPreference
@@ -90,7 +90,7 @@
         a:entries="@array/AbortProceedAsk"
         a:icon="@drawable/ic_unsecured"
         a:singleLineTitle="false"
-        a:enumClassName="fulguris.settings.NoYesAsk"
+        a:enumClassName="newuibrowser.settings.NoYesAsk"
         />
 
     <slions.pref.EnumListPreference
@@ -101,7 +101,7 @@
         a:entries="@array/incoming_url_actions"
         a:icon="@drawable/ic_baseline_open_in_new_24"
         a:singleLineTitle="false"
-        a:enumClassName="fulguris.enums.IncomingUrlAction"
+        a:enumClassName="newuibrowser.enums.IncomingUrlAction"
         />
 
 </androidx.preference.PreferenceScreen>

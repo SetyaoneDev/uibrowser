@@ -17,7 +17,7 @@ Should only be shown on first application start-up.
 
         <intent
             android:targetPackage="@string/application_id"
-            android:targetClass="fulguris.activity.SelectOtherBrowserActivity"
+            android:targetClass="newuibrowser.activity.SelectOtherBrowserActivity"
             android:data="@string/url_privacy_policy" />
 
     </Preference>

@@ -40,14 +40,14 @@
         >
 
         <Preference
-            a:fragment="fulguris.settings.fragment.PortraitSettingsFragment"
+            a:fragment="newuibrowser.settings.fragment.PortraitSettingsFragment"
             a:title="@string/settings_title_portrait"
             a:icon="@drawable/ic_phone"
             a:singleLineTitle="false"
             />
 
         <Preference
-            a:fragment="fulguris.settings.fragment.LandscapeSettingsFragment"
+            a:fragment="newuibrowser.settings.fragment.LandscapeSettingsFragment"
             a:title="@string/settings_title_landscape"
             a:icon="@drawable/ic_landscape"
             a:singleLineTitle="false"
@@ -69,7 +69,7 @@
         a:singleLineTitle="false">
 
         <Preference
-            a:fragment="fulguris.settings.fragment.TabSettingsFragment"
+            a:fragment="newuibrowser.settings.fragment.TabSettingsFragment"
             a:title="@string/settings_title_tab"
             a:summary="@string/settings_summary_tab"
             a:icon="@drawable/ic_tab"
@@ -84,7 +84,7 @@
             a:entries="@array/HeaderInfo"
             a:icon="@drawable/ic_label_outline"
             a:singleLineTitle="false"
-            a:enumClassName="fulguris.enums.HeaderInfo"
+            a:enumClassName="newuibrowser.enums.HeaderInfo"
             />
 
         <slions.pref.EnumListPreference
@@ -95,7 +95,7 @@
             a:entries="@array/HeaderInfo"
             a:icon="@drawable/ic_label_outline"
             a:singleLineTitle="false"
-            a:enumClassName="fulguris.enums.HeaderInfo"
+            a:enumClassName="newuibrowser.enums.HeaderInfo"
             />
 
         <slions.pref.SwitchPreference
@@ -201,7 +201,7 @@
             a:entries="@array/LayerTypes"
             a:icon="@drawable/ic_layers"
             a:singleLineTitle="false"
-            a:enumClassName="fulguris.enums.LayerType"
+            a:enumClassName="newuibrowser.enums.LayerType"
             />
 
         <Preference
@@ -232,7 +232,7 @@
             />
 
         <Preference
-            a:fragment="fulguris.settings.fragment.ScrollbarsSettingsFragment"
+            a:fragment="newuibrowser.settings.fragment.ScrollbarsSettingsFragment"
             a:title="@string/pref_category_scrollbars"
             a:summary="@string/pref_summary_scrollbars"
             a:icon="@drawable/ic_scroll_vertical"
